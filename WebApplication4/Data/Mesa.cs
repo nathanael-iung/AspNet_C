@@ -9,6 +9,11 @@ namespace WebApplication4.Data
     {
         public int MesaId { get; set; }
         public string Nome { get; set; }
+        public DateTime Inicio { get; set; }
+        public DateTime UltimoLance { get; set; }
+        public string Historico { get; set; } // PGN
+        public string Configuracao { get; set; } // white
+        public string Estado { get; set; } // FEN
         public ICollection<MesaUsuario> MesasUsuarios { get; set; }
     }
     public class MesaUsuario {
