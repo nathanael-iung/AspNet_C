@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication4.Models;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using WebApplication4.Business;
+using WebApplication4.Util;
 
 namespace WebApplication4
 {
@@ -56,7 +57,7 @@ namespace WebApplication4
             app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseMyMiddleware();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default",

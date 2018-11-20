@@ -16,13 +16,20 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    @RenderSection("head", required: false)
 </head>
 <body>
     <partial name="Menu" />
-    <div class="card card-body">@Context.Session.GetString("usuarioNome")</div>
-    <div class="container-fluid body-content">
+    @if ("semcontainer".Equals(ViewData["bodyType"]))
+    {
         @RenderBody()
-    </div>
+    }
+    else
+    {
+        <div class="container-fluid body-content">
+            @RenderBody()
+        </div>
+    }
     <footer class="footer container-fluid">
         <span class="text-muted">© UP ASPNET Layout com Bootstrap 4.</span>
     </footer>
