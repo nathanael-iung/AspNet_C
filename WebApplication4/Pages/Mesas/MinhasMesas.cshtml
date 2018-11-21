@@ -1,4 +1,6 @@
 ﻿@page
+@using WebApplication4.Data; // Mesa, MesaUsuario, Usuario
+
 @model WebApplication4.Pages.Mesas.MinhasMesasModel
 @{
     ViewData["Title"] = "MinhasMesas";
@@ -13,3 +15,29 @@
         <button>Criar Nova</button>
     </form>
 </div>
+
+<table class="table table-hover">
+    <thead>
+        <th>Nome</th>
+        <th>Usuários</th>
+    </thead>
+    <tbody>
+        @foreach(Mesa mesa in Model.mesas)
+        {
+            <tr>
+                <td>@mesa.Nome</td>
+                <td>
+                    @foreach(MesaUsuario mu in mesa.MesasUsuarios)
+                    {
+                        @if (mesa.MesasUsuarios.First() != mu)
+                        {
+                            @:,
+                        }
+                        @mu.Usuario.Nome
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
